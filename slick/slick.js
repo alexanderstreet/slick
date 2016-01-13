@@ -427,8 +427,8 @@
 
             if( _.slideCount > _.options.slidesToShow ) {
 
-                _.$prevArrow.removeClass('slick-hidden').removeAttr('aria-hidden tabindex');
-                _.$nextArrow.removeClass('slick-hidden').removeAttr('aria-hidden tabindex');
+                _.$prevArrow.removeClass('slick-hidden').removeAttr('tabindex');
+                _.$nextArrow.removeClass('slick-hidden').removeAttr('tabindex');
 
                 if (_.htmlExpr.test(_.options.prevArrow)) {
                     _.$prevArrow.prependTo(_.options.appendArrows);
@@ -478,7 +478,7 @@
             _.$dots = $(dotString).appendTo(
                 _.options.appendDots);
 
-            _.$dots.find('li').first().addClass('slick-active').attr('aria-hidden', 'false');
+            _.$dots.find('li').first().addClass('slick-active');
 
         }
 
@@ -831,7 +831,7 @@
 
             _.$prevArrow
                 .removeClass('slick-disabled slick-arrow slick-hidden')
-                .removeAttr('aria-hidden aria-disabled tabindex')
+                .removeAttr('aria-disabled tabindex')
                 .css("display","");
 
             if ( _.htmlExpr.test( _.options.prevArrow )) {
@@ -843,7 +843,7 @@
 
             _.$nextArrow
                 .removeClass('slick-disabled slick-arrow slick-hidden')
-                .removeAttr('aria-hidden aria-disabled tabindex')
+                .removeAttr('aria-disabled tabindex')
                 .css("display","");
 
             if ( _.htmlExpr.test( _.options.nextArrow )) {
@@ -857,7 +857,6 @@
 
             _.$slides
                 .removeClass('slick-slide slick-active slick-center slick-visible slick-current')
-                .removeAttr('aria-hidden')
                 .removeAttr('data-slick-index')
                 .each(function(){
                     $(this).attr('style', $(this).data('originalStyling'));
@@ -1937,8 +1936,7 @@
 
         allSlides = _.$slider
             .find('.slick-slide')
-            .removeClass('slick-active slick-center slick-current')
-            .attr('aria-hidden', 'true');
+            .removeClass('slick-active slick-center slick-current');
 
         _.$slides
             .eq(index)
@@ -1954,16 +1952,14 @@
 
                     _.$slides
                         .slice(index - centerOffset, index + centerOffset + 1)
-                        .addClass('slick-active')
-                        .attr('aria-hidden', 'false');
+                        .addClass('slick-active');
 
                 } else {
 
                     indexOffset = _.options.slidesToShow + index;
                     allSlides
                         .slice(indexOffset - centerOffset + 1, indexOffset + centerOffset + 2)
-                        .addClass('slick-active')
-                        .attr('aria-hidden', 'false');
+                        .addClass('slick-active');
 
                 }
 
@@ -1993,14 +1989,12 @@
 
                 _.$slides
                     .slice(index, index + _.options.slidesToShow)
-                    .addClass('slick-active')
-                    .attr('aria-hidden', 'false');
+                    .addClass('slick-active');
 
             } else if (allSlides.length <= _.options.slidesToShow) {
 
                 allSlides
-                    .addClass('slick-active')
-                    .attr('aria-hidden', 'false');
+                    .addClass('slick-active');
 
             } else {
 
@@ -2011,15 +2005,13 @@
 
                     allSlides
                         .slice(indexOffset - (_.options.slidesToShow - remainder), indexOffset + remainder)
-                        .addClass('slick-active')
-                        .attr('aria-hidden', 'false');
+                        .addClass('slick-active');
 
                 } else {
 
                     allSlides
                         .slice(indexOffset, indexOffset + _.options.slidesToShow)
-                        .addClass('slick-active')
-                        .attr('aria-hidden', 'false');
+                        .addClass('slick-active');
 
                 }
 
@@ -2501,7 +2493,6 @@
 
         _.$slides
             .removeClass('slick-slide slick-active slick-visible slick-current')
-            .attr('aria-hidden', 'true')
             .css('width', '');
 
     };
@@ -2557,14 +2548,12 @@
 
             _.$dots
                 .find('li')
-                .removeClass('slick-active')
-                .attr('aria-hidden', 'true');
+                .removeClass('slick-active');
 
             _.$dots
                 .find('li')
                 .eq(Math.floor(_.currentSlide / _.options.slidesToScroll))
-                .addClass('slick-active')
-                .attr('aria-hidden', 'false');
+                .addClass('slick-active');
 
         }
 
@@ -2588,7 +2577,6 @@
     Slick.prototype.initADA = function() {
         var _ = this;
         _.$slides.add(_.$slideTrack.find('.slick-cloned')).attr({
-            'aria-hidden': 'true',
             'tabindex': '-1'
         }).find('a, input, button, select').attr({
             'tabindex': '-1'
@@ -2623,9 +2611,7 @@
     Slick.prototype.activateADA = function() {
         var _ = this;
 
-        _.$slideTrack.find('.slick-active').attr({
-            'aria-hidden': 'false'
-        }).find('a, input, button, select').attr({
+        _.$slideTrack.find('.slick-active').find('a, input, button, select').attr({
             'tabindex': '0'
         });
 
