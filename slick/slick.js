@@ -44,15 +44,15 @@
                 appendDots: $(element),
                 arrows: true,
                 asNavFor: null,
-                prevArrow: '<button type="button" data-role="none" class="slick-prev" aria-label="Previous" tabindex="0" role="button">Previous</button>',
-                nextArrow: '<button type="button" data-role="none" class="slick-next" aria-label="Next" tabindex="0" role="button">Next</button>',
+                prevArrow: '<button type="button" data-role="none" class="slick-prev" aria-label="Previous" role="button">Previous</button>',
+                nextArrow: '<button type="button" data-role="none" class="slick-next" aria-label="Next" role="button">Next</button>',
                 autoplay: false,
                 autoplaySpeed: 3000,
                 centerMode: false,
                 centerPadding: '50px',
                 cssEase: 'ease',
                 customPaging: function(slider, i) {
-                    return '<button type="button" data-role="none" role="button" aria-required="false" tabindex="0">' + (i + 1) + '</button>';
+                    return '<button type="button" data-role="none" role="button" aria-required="false">' + (i + 1) + '</button>';
                 },
                 dots: false,
                 dotsClass: 'slick-dots',
@@ -427,8 +427,8 @@
 
             if( _.slideCount > _.options.slidesToShow ) {
 
-                _.$prevArrow.removeClass('slick-hidden').removeAttr('tabindex');
-                _.$nextArrow.removeClass('slick-hidden').removeAttr('tabindex');
+                _.$prevArrow.removeClass('slick-hidden');
+                _.$nextArrow.removeClass('slick-hidden');
 
                 if (_.htmlExpr.test(_.options.prevArrow)) {
                     _.$prevArrow.prependTo(_.options.appendArrows);
@@ -451,7 +451,6 @@
                     .addClass('slick-hidden')
                     .attr({
                         'aria-disabled': 'true',
-                        'tabindex': '-1'
                     });
 
             }
@@ -831,7 +830,7 @@
 
             _.$prevArrow
                 .removeClass('slick-disabled slick-arrow slick-hidden')
-                .removeAttr('aria-disabled tabindex')
+                .removeAttr('aria-disabled')
                 .css("display","");
 
             if ( _.htmlExpr.test( _.options.prevArrow )) {
@@ -843,7 +842,7 @@
 
             _.$nextArrow
                 .removeClass('slick-disabled slick-arrow slick-hidden')
-                .removeAttr('aria-disabled tabindex')
+                .removeAttr('aria-disabled')
                 .css("display","");
 
             if ( _.htmlExpr.test( _.options.nextArrow )) {
@@ -2576,11 +2575,7 @@
     };
     Slick.prototype.initADA = function() {
         var _ = this;
-        _.$slides.add(_.$slideTrack.find('.slick-cloned')).attr({
-            'tabindex': '-1'
-        }).find('a, input, button, select').attr({
-            'tabindex': '-1'
-        });
+        _.$slides.add(_.$slideTrack.find('.slick-cloned'));
 
         _.$slideTrack.attr('role', 'listbox');
 
@@ -2604,17 +2599,6 @@
                 .find('button').attr('role', 'button').end()
                 .closest('div').attr('role', 'toolbar');
         }
-        _.activateADA();
-
-    };
-
-    Slick.prototype.activateADA = function() {
-        var _ = this;
-
-        _.$slideTrack.find('.slick-active').find('a, input, button, select').attr({
-            'tabindex': '0'
-        });
-
     };
 
     Slick.prototype.focusHandler = function() {
