@@ -2577,11 +2577,8 @@
         var _ = this;
         _.$slides.add(_.$slideTrack.find('.slick-cloned'));
 
-        _.$slideTrack.attr('role', 'listbox');
-
         _.$slides.not(_.$slideTrack.find('.slick-cloned')).each(function(i) {
             $(this).attr({
-                'role': 'option',
                 'aria-describedby': 'slick-slide' + _.instanceUid + i + ''
             });
         });
