@@ -2061,6 +2061,7 @@
                 _.$slideTrack.find('.slick-cloned').find('[id]').each(function() {
                     $(this).attr('id', '');
                 });
+                _.$slideTrack.find('a').attr('tabindex', '-1');
 
             }
 
